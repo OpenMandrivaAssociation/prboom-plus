@@ -1,6 +1,6 @@
 Name:		prboom-plus
-Version:	2.5.1.1
-Release:	5.7
+Version:	2.5.1.3
+Release:	%mkrel 1
 Summary:	Open source port of the DOOM game engine
 
 Group:		Amusements/Games/3D/Shoot
@@ -15,13 +15,11 @@ Patch5:		prboom-enable-tessellation.diff
 Source2:	clean_source.sh
 
 BuildRoot:	%_tmppath/%name-%version-build
-BuildRequires:	Mesa-devel, fluidsynth-devel, libSDL_image-devel
+BuildRequires:	GL-devel, fluidsynth-devel, libSDL_image-devel
 BuildRequires:	libSDL_mixer-devel, libSDL_net-devel, libvorbis-devel
 BuildRequires:	libpng-devel, pcre-devel, xz
 
 Suggests:	freedoom
-Provides:	prboom = 2.5.0+
-Obsoletes:	prboom <= 2.5.0
 
 %description
 PrBoom+ is a Doom source port developed from the original PrBoom
@@ -53,24 +51,24 @@ Author(s):
 ./bootstrap;
 # rpm has its own optimizations, so turn off shipped defaults
 %configure --enable-gl --disable-cpu-opt --program-prefix='' \
-	--with-waddir=%_datadir/doom --disable-dogs
+	--with-waddir=%{_gamesdatadir}/doom
 make %{?_smp_mflags}
 
 %install
-b="%buildroot";
-make install DESTDIR="$b";
+
+make install DESTDIR=%{buildroot};
 # Will manually package docs (see %%files)
-rm -Rf "$b/%_datadir/doc";
-mkdir -p "$b/%_bindir";
-mv "$b/%_prefix/games"/* "$b/%_bindir/";
-# Convenience symlink
-ln -s prboom-plus "$b/%_bindir/prboom";
+rm -Rf %{buildroot}/%{_gamesdatadir}/doc;
+mkdir -p %{buildroot}/%{_gamesbindir};
+mv %{buildroot}/%_prefix/games/* %{buildroot}/%{_gamesbindir}/;
+
+
 
 %files
 %defattr(-,root,root,-)
 %doc NEWS AUTHORS README
 %doc doc/MBF.txt doc/MBFFAQ.txt doc/README.compat doc/README.demos doc/boom.txt
-%_bindir/*
-%_datadir/doom
-%_mandir/*/*
+%{_gamesbindir}/*
+%{_gamesdatadir}/doom
+%{_mandir}/*/*
 
