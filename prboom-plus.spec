@@ -3,7 +3,7 @@ Version:	2.5.1.3
 Release:	%mkrel 1
 Summary:	Open source port of the DOOM game engine
 
-Group:		Amusements/Games/3D/Shoot
+Group:		Games/Arcade
 License:	GPLv2+
 URL:		http://prboom-plus.sourceforge.net/
 Source:		%name-%version+.tar.xz
