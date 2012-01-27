@@ -62,8 +62,6 @@ make install DESTDIR=%{buildroot};
 # Will manually package docs (see %%files)
 rm -Rf %{buildroot}/%{_gamesdatadir}/doc;
 mkdir -p %{buildroot}/%{_gamesbindir};
-mv %{buildroot}/%_prefix/games/* %{buildroot}/%{_gamesbindir}/;
-
 
 
 %files
