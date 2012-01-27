@@ -45,7 +45,7 @@ Author(s):
 
 %prep
 %setup -q
-%patch -P 1 -P 2 -P 3 -P 4 -P 5 -p1
+# %patch -P 1 -P 2 -P 3 -P 4 -P 5 -p1
 
 %build
 ./bootstrap;
