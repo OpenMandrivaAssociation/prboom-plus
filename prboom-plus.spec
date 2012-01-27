@@ -71,4 +71,4 @@ mkdir -p %{buildroot}/%{_gamesbindir};
 %{_gamesbindir}/*
 %{_gamesdatadir}/doom
 %{_mandir}/*/*
-
+%{_docdir}/prboom-plus-2.5.1.3/*
