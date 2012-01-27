@@ -1,3 +1,5 @@
+%define		Werror_cflags %nil
+
 Name:		prboom-plus
 Version:	2.5.1.3
 Release:	%mkrel 1
