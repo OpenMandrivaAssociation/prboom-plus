@@ -1,0 +1,14 @@
+---
+ src/version.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: prboom-plus-2.5.1.1/src/version.c
+===================================================================
+--- prboom-plus-2.5.1.1.orig/src/version.c
++++ prboom-plus-2.5.1.1/src/version.c
+@@ -35,4 +35,4 @@
+ 
+ #include "version.h"
+ 
+-const char version_date[] = __DATE__ " " __TIME__;
++const char version_date[] = "";

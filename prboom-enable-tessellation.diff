@@ -1,0 +1,26 @@
+Date: 2011-08-03 18:36:44+0200
+From: Jan Engelhardt <jengelh@medozas.de>
+
+Always do tesselation, because otherwise, map hacks like
+self-referencing sectors (cf.
+http://doom.wikia.com/wiki/Making_a_self-referencing_sector) will not
+be rendered.
+
+---
+ src/gl_main.c |    3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: prboom-plus-2.5.1.1/src/gl_main.c
+===================================================================
+--- prboom-plus-2.5.1.1.orig/src/gl_main.c
++++ prboom-plus-2.5.1.1/src/gl_main.c
+@@ -83,6 +83,9 @@
+ #ifdef USE_CUSTOM_QSORT
+ #include "qsort.h"
+ #endif
++#ifndef USE_GLU_TESS
++#	define USE_GLU_TESS 1
++#endif
+ 
+ int triangulate_subsectors = 0;
+ // All OpenGL extentions will be disabled in gl_compatibility mode

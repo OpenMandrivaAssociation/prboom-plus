@@ -1,0 +1,43 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+
+build: fix compiler warnings
+
+oplplayer.c:1347:9: warning: format '%i' expects type 'int', but
+argument 3 has type 'size_t'
+gl_main.c:1307:5: warning: format '%i' expects type 'int', but
+argument 3 has type 'long int'
+
+size_t requires %z; the second instance actually has type ptrdiff_t,
+so %t is required.
+
+---
+ src/MUSIC/oplplayer.c |    2 +-
+ src/gl_main.c         |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: prboom-plus-2.5.1.1/src/MUSIC/oplplayer.c
+===================================================================
+--- prboom-plus-2.5.1.1.orig/src/MUSIC/oplplayer.c
++++ prboom-plus-2.5.1.1/src/MUSIC/oplplayer.c
+@@ -1344,7 +1344,7 @@ static const void *I_OPL_RegisterSong(co
+     // time numbers we have to traverse the tracks and everything
+     if (mf.len < 100)
+     {
+-        lprintf (LO_WARN, "I_OPL_RegisterSong: Very short MIDI (%i bytes)\n", mf.len);
++        lprintf (LO_WARN, "I_OPL_RegisterSong: Very short MIDI (%zu bytes)\n", mf.len);
+         return NULL;
+     }
+ 
+Index: prboom-plus-2.5.1.1/src/gl_main.c
+===================================================================
+--- prboom-plus-2.5.1.1.orig/src/gl_main.c
++++ prboom-plus-2.5.1.1/src/gl_main.c
+@@ -1304,7 +1304,7 @@ static void gld_FlatConvexCarver(int ssi
+ 
+   if(!numedgepoints)
+   {
+-    if (levelinfo) fprintf(levelinfo, "All carved away: subsector %i - sector %i\n", ssec-subsectors, ssec->sector->iSectorID);
++    if (levelinfo) fprintf(levelinfo, "All carved away: subsector %td - sector %i\n", ssec-subsectors, ssec->sector->iSectorID);
+   }
+   else
+   {
