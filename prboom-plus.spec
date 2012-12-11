@@ -8,18 +8,23 @@ Summary:	Open source port of the DOOM game engine
 Group:		Games/Arcade
 License:	GPLv2+
 URL:		http://prboom-plus.sourceforge.net/
-Source:		%name-%version+.tar.xz
+Source0:	%name-%version+.tar.xz
 Patch1:		prboom-nodatetime.diff
 Patch2:		prboom-types1.diff
 Patch3:		prboom-types2.diff
 Patch4:		prboom-protos.diff
 Patch5:		prboom-enable-tessellation.diff
 Source2:	clean_source.sh
-
-BuildRoot:	%_tmppath/%name-%version-build
-BuildRequires:	GL-devel, fluidsynth-devel, libSDL_image-devel
-BuildRequires:	libSDL_mixer-devel, libSDL_net-devel, libvorbis-devel
-BuildRequires:	libpng-devel, pcre-devel, xz
+BuildRequires:	xz
+BuildRequires:	pkgconfig(SDL_image)
+BuildRequires:	pkgconfig(libpcre)
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(vorbis)
+BuildRequires:	pkgconfig(SDL_net)
+BuildRequires:	pkgconfig(SDL_mixer)
+BuildRequires:	pkgconfig(fluidsynth)
+BuildRequires:	pkgconfig(gl)
+BuildRequires:	pkgconfig(glu)
 
 Suggests:	freedoom
 
@@ -54,18 +59,16 @@ Author(s):
 # rpm has its own optimizations, so turn off shipped defaults
 %configure --enable-gl --disable-cpu-opt --program-prefix='' \
 	--with-waddir=%{_gamesdatadir}/doom
-make %{?_smp_mflags}
+%make
 
 %install
-
-make install DESTDIR=%{buildroot};
+%makeinstall_std
 # Will manually package docs (see %%files)
 rm -Rf %{buildroot}/%{_gamesdatadir}/doc;
 mkdir -p %{buildroot}/%{_gamesbindir};
 
 
 %files
-%defattr(-,root,root,-)
 %doc NEWS AUTHORS README
 %doc doc/MBF.txt doc/MBFFAQ.txt doc/README.compat doc/README.demos doc/boom.txt
 %{_gamesbindir}/*
