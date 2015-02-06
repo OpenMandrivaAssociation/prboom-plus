@@ -2,7 +2,7 @@
 
 Name:		prboom-plus
 Version:	2.5.1.3
-Release:	%mkrel 1
+Release:	2
 Summary:	Open source port of the DOOM game engine
 
 Group:		Games/Arcade
