@@ -46,7 +46,7 @@ Author(s):
 	Andrey "e6y" Budko
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}um
 
 %build
 cd prboom2
