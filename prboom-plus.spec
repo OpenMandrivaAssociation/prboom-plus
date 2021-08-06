@@ -11,12 +11,13 @@ URL:		http://prboom-plus.sourceforge.net/
 Source0:	https://github.com/coelckers/prboom-plus/archive/refs/tags/v%{version}um/%{name}-%{version}um.tar.gz
 BuildRequires:	cmake
 BuildRequires:	xz
-BuildRequires:	pkgconfig(SDL_image)
 BuildRequires:	pkgconfig(libpcre)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(vorbis)
-BuildRequires:	pkgconfig(SDL_net)
-BuildRequires:	pkgconfig(SDL_mixer)
+BuildRequires:  pkgconfig(SDL2_image)
+BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(SDL2_net)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:	pkgconfig(fluidsynth)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
