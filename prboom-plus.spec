@@ -64,9 +64,7 @@ mkdir -p %{buildroot}/%{_gamesbindir};
 
 
 %files
-%doc NEWS AUTHORS README
 %doc doc/MBF.txt doc/MBFFAQ.txt doc/README.compat doc/README.demos doc/boom.txt
-%{_gamesbindir}/*
-%{_gamesdatadir}/doom
+#{_gamesbindir}/*
+#{_gamesdatadir}/doom
 %{_mandir}/*/*
-%{_docdir}/prboom-plus-2.5.1.3/*
