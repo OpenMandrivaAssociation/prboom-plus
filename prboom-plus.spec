@@ -55,6 +55,7 @@ cd prboom2
 %make_build
 
 %install
+cd prboom2
 %make_install -C build
 
 # Will manually package docs (see %%files)
