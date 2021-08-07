@@ -1,27 +1,23 @@
 %define		Werror_cflags %nil
 
 Name:		prboom-plus
-Version:	2.5.1.3
-Release:	3
+Version:	2.6
+Release:	1
 Summary:	Open source port of the DOOM game engine
 
 Group:		Games/Arcade
 License:	GPLv2+
 URL:		http://prboom-plus.sourceforge.net/
-Source0:	%name-%version+.tar.xz
-Patch1:		prboom-nodatetime.diff
-Patch2:		prboom-types1.diff
-Patch3:		prboom-types2.diff
-Patch4:		prboom-protos.diff
-Patch5:		prboom-enable-tessellation.diff
-Source2:	clean_source.sh
+Source0:	https://github.com/coelckers/prboom-plus/archive/refs/tags/v%{version}um/%{name}-%{version}um.tar.gz
+BuildRequires:	cmake
 BuildRequires:	xz
-BuildRequires:	pkgconfig(SDL_image)
 BuildRequires:	pkgconfig(libpcre)
 BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(vorbis)
-BuildRequires:	pkgconfig(SDL_net)
-BuildRequires:	pkgconfig(SDL_mixer)
+BuildRequires:  pkgconfig(SDL2_image)
+BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(SDL2_net)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:	pkgconfig(fluidsynth)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
@@ -51,27 +47,26 @@ Author(s):
 	Andrey "e6y" Budko
 
 %prep
-%setup -q
-# %patch -P 1 -P 2 -P 3 -P 4 -P 5 -p1
+%setup -q -n %{name}-%{version}um
 
 %build
-./bootstrap;
-# rpm has its own optimizations, so turn off shipped defaults
-%configure --enable-gl --disable-cpu-opt --program-prefix='' \
-	--with-waddir=%{_gamesdatadir}/doom
-%make
+cd prboom2
+%cmake
+%make_build
 
 %install
-%makeinstall_std
+cd prboom2
+%make_install -C build
+
 # Will manually package docs (see %%files)
 rm -Rf %{buildroot}/%{_gamesdatadir}/doc;
 mkdir -p %{buildroot}/%{_gamesbindir};
 
 
 %files
-%doc NEWS AUTHORS README
 %doc doc/MBF.txt doc/MBFFAQ.txt doc/README.compat doc/README.demos doc/boom.txt
-%{_gamesbindir}/*
-%{_gamesdatadir}/doom
+%doc %{_datadir}/doc/prboom-plus/
+%{_bindir}/prboom-plus
+%{_bindir}/prboom-plus-game-server
+%{_datadir}/games/doom/prboom-plus.wad
 %{_mandir}/*/*
-%{_docdir}/prboom-plus-2.5.1.3/*
