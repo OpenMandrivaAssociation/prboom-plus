@@ -64,7 +64,7 @@ mkdir -p %{buildroot}/%{_gamesbindir};
 
 
 %files
-%doc %{_datadir}doc/PrBoom-Plus/
+%doc %{_datadir}/doc/PrBoom-Plus/
 %{_bindir}/prboom-plus
 %{_bindir}/prboom-plus-game-server
 %{_datadir}/prboom-plus/prboom-plus.wad
