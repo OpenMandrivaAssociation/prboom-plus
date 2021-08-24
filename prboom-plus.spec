@@ -1,14 +1,14 @@
 %define		Werror_cflags %nil
 
 Name:		prboom-plus
-Version:	2.6
+Version:	2.6.1um
 Release:	1
 Summary:	Open source port of the DOOM game engine
 
 Group:		Games/Arcade
 License:	GPLv2+
 URL:		http://prboom-plus.sourceforge.net/
-Source0:	https://github.com/coelckers/prboom-plus/archive/refs/tags/v%{version}um/%{name}-%{version}um.tar.gz
+Source0:	https://github.com/coelckers/prboom-plus/archive/refs/tags/v%{version}um/%{name}-%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	xz
 BuildRequires:	pkgconfig(libpcre)
@@ -47,7 +47,7 @@ Author(s):
 	Andrey "e6y" Budko
 
 %prep
-%setup -q -n %{name}-%{version}um
+%setup -q -n %{name}-%{version}
 
 %build
 cd prboom2
