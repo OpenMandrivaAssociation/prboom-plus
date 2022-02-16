@@ -51,7 +51,7 @@ Author(s):
 
 %build
 cd prboom2
-%cmake
+%cmake -DOpenGL_GL_PREFERENCE=STRING=LEGACY
 %make_build
 
 %install
