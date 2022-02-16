@@ -1,7 +1,7 @@
 %define		Werror_cflags %nil
 
 Name:		prboom-plus
-Version:	2.6.1um
+Version:	2.6.2
 Release:	1
 Summary:	Open source port of the DOOM game engine
 
