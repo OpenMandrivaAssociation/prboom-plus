@@ -48,10 +48,11 @@ Author(s):
 
 %prep
 %setup -q -n %{name}-%{version}
+%autopatch -p1
 
 %build
 cd prboom2
-%cmake -DOpenGL_GL_PREFERENCE=LEGACY
+%cmake
 %make_build
 
 %install
