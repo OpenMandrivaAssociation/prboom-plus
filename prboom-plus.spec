@@ -9,6 +9,7 @@ Group:		Games/Arcade
 License:	GPLv2+
 URL:		http://prboom-plus.sourceforge.net/
 Source0:	https://github.com/coelckers/prboom-plus/archive/refs/tags/v%{version}um/%{name}-%{version}.tar.gz
+Patch0:		fix-build.patch
 BuildRequires:	cmake
 BuildRequires:	xz
 BuildRequires:	pkgconfig(libpcre)
