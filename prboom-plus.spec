@@ -9,6 +9,8 @@ Group:		Games/Arcade
 License:	GPLv2+
 URL:		http://prboom-plus.sourceforge.net/
 Source0:	https://github.com/coelckers/prboom-plus/archive/refs/tags/v%{version}um/%{name}-%{version}.tar.gz
+# Upstream:	https://github.com/coelckers/prboom-plus/issues/477
+# Use patch (it was merged by upstream and should be applied out ot box with next release) or change GL preference in cmake to "LEGACY"
 Patch0:		fix-build.patch
 BuildRequires:	cmake
 BuildRequires:	xz
@@ -66,7 +68,7 @@ mkdir -p %{buildroot}/%{_gamesbindir};
 
 
 %files
-%doc %{_datadir}/doc/PrBoom-Plus/
+#doc #{_datadir}/doc/PrBoom-Plus/
 %{_bindir}/prboom-plus
 %{_bindir}/prboom-plus-game-server
 %{_datadir}/prboom-plus/prboom-plus.wad
