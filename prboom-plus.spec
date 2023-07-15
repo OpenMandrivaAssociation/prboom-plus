@@ -1,3 +1,5 @@
+%global optflags %{optflags} -Wno-incompatible-function-pointer-types
+
 %define		Werror_cflags %nil
 
 Name:		prboom-plus
