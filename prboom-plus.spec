@@ -9,7 +9,7 @@ Summary:	Open source port of the DOOM game engine
 
 Group:		Games/Arcade
 License:	GPLv2+
-URL:		http://prboom-plus.sourceforge.net/
+URL:		https://prboom-plus.sourceforge.net/
 Source0:	https://github.com/coelckers/prboom-plus/archive/refs/tags/v%{version}um/%{name}-%{version}.tar.gz
 
 BuildRequires:	cmake
